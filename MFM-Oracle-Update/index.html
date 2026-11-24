@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0e14">
+  <meta name="description" content="MFM Oracle — Quand les guidelines ne suffisent plus.. Un cadeau de diplôme, des réponses au hasard et beaucoup de second degré. Jeu exclusivement humoristique, sans usage clinique.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MFM Oracle">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>THE FETAL MEDICINE ORACLE</title>
+</head>
+<body>
+  <svg class="icon-library" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><defs>
+    <symbol id="spark" viewBox="0 0 24 24"><path d="m12 2 2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5Z"/><path d="m21 2 .5 1.5L23 4l-1.5.5L21 6l-.5-1.5L19 4l1.5-.5Z"/></symbol>
+    <symbol id="download" viewBox="0 0 24 24"><path d="M12 3v12m-4-4 4 4 4-4M5 15v5h14v-5"/></symbol>
+    <symbol id="phone" viewBox="0 0 24 24"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M10 6h4m-3 12h2M3 8l-1 4 1 4m18-8 1 4-1 4"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  </defs></svg>
+  <header class="masthead">
+    <a class="wordmark" href="./" aria-label="MFM Oracle, accueil"><svg aria-hidden="true"><use href="#spark"/></svg><span>MFM <span class="wordmark-light">/ ORACLE</span></span></a>
+    <button class="install-button" id="install" aria-label="Installer MFM Oracle" aria-haspopup="dialog"><svg aria-hidden="true"><use href="#download"/></svg><span>Installer</span></button>
+  </header>
+  <main>
+    <div class="edition"><span></span> ÉDITION SPÉCIALE · 2026 <span></span></div>
+    <h1><span>THE FETAL MEDICINE</span><em>ORACLE</em></h1>
+    <p class="tagline">Quand les guidelines ne suffisent plus.</p>
+    <p class="humour-label">Validé par aucun comité scientifique.</p>
+    <div class="oracle-stage">
+      <div class="orbit orbit-one" aria-hidden="true"></div><div class="orbit orbit-two" aria-hidden="true"></div>
+      <span class="stage-spark spark-left" aria-hidden="true">✧</span><span class="stage-spark spark-right" aria-hidden="true">✦</span>
+      <div class="legendary-stars" aria-hidden="true"><span style="--i:0;--x:50%;--y:4%">✦</span><span style="--i:1;--x:83%;--y:17%">✦</span><span style="--i:2;--x:96%;--y:50%">✦</span><span style="--i:3;--x:83%;--y:83%">✦</span><span style="--i:4;--x:50%;--y:96%">✦</span><span style="--i:5;--x:17%;--y:83%">✦</span><span style="--i:6;--x:4%;--y:50%">✦</span><span style="--i:7;--x:17%;--y:17%">✦</span></div>
+      <div class="floor-shadow" aria-hidden="true"></div>
+      <button id="ball" class="ball-button" aria-label="Faire tourner la boule et révéler une réponse humoristique" aria-describedby="consultHint"><canvas id="ballCanvas" aria-hidden="true"></canvas></button>
+    </div>
+    <div class="verdict-label" id="answerKind" aria-hidden="true">LE HASARD A FAIT MÉDECINE.</div>
+    <div id="answer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
+    <div class="dedication" id="dedication"><p>Toutes ces années de formation…<br><span>Alors qu’il suffisait de télécharger l’application.</span></p></div>
+    <div class="controls">
+      <button class="consult-button" id="consult"><svg aria-hidden="true"><use href="#spark"/></svg><span id="consultLabel">Consulter l’oracle</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+      <p id="consultHint" class="consult-hint">Une question existentielle ? Touche la boule.</p>
+      <button class="motion-button" id="motion" aria-pressed="false"><svg aria-hidden="true"><use href="#phone"/></svg><span>Activer le mode secousse</span></button>
+      <p class="motion-status" id="motionStatus" role="status" aria-live="polite"></p>
+    </div>
+    <noscript><p class="noscript">Active JavaScript pour consulter l’oracle. Promis, il n’a pas besoin de PubMed.</p></noscript>
+  </main>
+  <footer>
+    <div class="footer-rule"><span>✧</span></div>
+    <p class="proof">Sensibilité inconnue. Spécificité discutable.<br>Niveau de preuve : avis d'expert autoproclamé.</p>
+    <p class="disclaimer">À usage humoristique exclusivement.<br>Ne remplace pas un colloque de médecine fœtale (malheureusement).</p>
+    <p class="offline-status" id="offlineStatus" role="status">Préparation du mode hors ligne…</p>
+  </footer>
+  <dialog id="installDialog" aria-labelledby="installTitle" aria-describedby="installDescription">
+    <button class="close-button" id="closeInstall" aria-label="Fermer"><svg aria-hidden="true"><use href="#close"/></svg></button>
+    <svg class="dialog-spark" aria-hidden="true"><use href="#spark"/></svg>
+    <p class="edition">TOUJOURS DANS TA POCHE</p>
+    <h2 id="installTitle">Un oracle à domicile.</h2>
+    <p id="installDescription">Installe MFM Oracle sur ton écran d’accueil. Aucun App Store, aucun abonnement.</p>
+    <ol><li><span>01</span><div>Ouvre cette page dans <strong>Safari</strong> sur ton iPhone.</div></li><li><span>02</span><div>Touche <strong>Partager</strong> (parfois dans le menu <strong>…</strong>), puis <strong>Sur l’écran d’accueil</strong>.</div></li><li><span>03</span><div>Active <strong>Ouvrir comme app web</strong> si proposé, puis touche <strong>Ajouter</strong>.</div></li></ol>
+    <p class="install-note">Lance l’app une fois avec Internet et attends « Prêt hors ligne ». L’oracle fonctionnera ensuite sans réseau.</p>
+    <p class="install-other">Sur Android ou ordinateur : utilise aussi « Installer l’application » dans le menu du navigateur.</p>
+  </dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
