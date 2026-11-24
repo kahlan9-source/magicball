@@ -1,0 +1,16 @@
+{
+  "name": "mfm-oracle",
+  "version": "2.0.1",
+  "private": true,
+  "type": "module",
+  "description": "A French graduation gift. Humour only; no clinical use.",
+  "scripts": {
+    "start": "python3 -m http.server 8000 --bind 127.0.0.1",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs",
+    "build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
+}

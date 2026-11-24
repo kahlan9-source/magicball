@@ -1,0 +1,18 @@
+{
+  "id": "./",
+  "name": "MFM Oracle — Evidence-Based Magic",
+  "short_name": "MFM Oracle",
+  "description": "Une boule magique et de l’humour materno-fœtal. Cadeau de diplôme, exclusivement pour rire. Aucune utilisation clinique.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0b0e14",
+  "theme_color": "#0b0e14",
+  "categories": ["entertainment"],
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
