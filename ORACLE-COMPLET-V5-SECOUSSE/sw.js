@@ -1,5 +1,5 @@
 // Bump this version whenever any shipped file changes.
-const VERSION = 'v5.0.0';
+const VERSION = 'v6.0.0';
 const SCOPE = self.registration.scope;
 const PREFIX = `mfm-oracle:${SCOPE}:`;
 const CACHE = `${PREFIX}${VERSION}`;

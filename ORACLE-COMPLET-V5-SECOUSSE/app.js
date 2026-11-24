@@ -23,7 +23,7 @@ async function consult() {
   busy = true;
   shake.reset();
   $('ball').setAttribute('aria-busy', 'true');
-  $('consultHint').textContent = 'Consultation du niveau de preuve Z…';
+  $('consultHint').textContent = '…';
   $('answer').textContent = '';
   $('answerKind').textContent = '';
   document.body.classList.remove('is-rare');
@@ -32,20 +32,20 @@ async function consult() {
   try {
     await ball.reveal(result.text);
     previous = result.text;
-    $('answer').textContent = (result.rare ? 'RÉPONSE LÉGENDAIRE : ' : '') + result.text;
+    $('answer').textContent = result.text;
     $('answerKind').textContent = result.rare ? 'RÉPONSE LÉGENDAIRE' : 'LE VERDICT';
-    $('ball').setAttribute('aria-label', `L’oracle a parlé : ${result.text}. Secoue à nouveau le téléphone.`);
+    $('ball').setAttribute('aria-label', `Verdict : ${result.text}`);
     document.body.classList.add('has-answer');
     document.body.classList.toggle('is-rare', result.rare);
-    $('consultHint').textContent = result.rare ? 'Un événement à publier dans la littérature.' : 'L’oracle a parlé. Le café reste une option.';
+    $('consultHint').textContent = 'Secoue pour un autre verdict.';
     if (!reducedMotion.matches && typeof navigator.vibrate === 'function') navigator.vibrate(30);
   } catch (error) {
     // Text remains available if a graphics context is interrupted.
     previous = result.text;
-    $('answer').textContent = (result.rare ? 'RÉPONSE LÉGENDAIRE : ' : '') + result.text;
+    $('answer').textContent = result.text;
     $('answerKind').textContent = result.rare ? 'RÉPONSE LÉGENDAIRE' : 'LE VERDICT';
     document.body.classList.toggle('is-rare', result.rare);
-    $('consultHint').textContent = result.text;
+    $('consultHint').textContent = 'Secoue pour un autre verdict.';
     console.warn('Le rendu de l’oracle a été interrompu.', error);
   } finally {
     document.body.classList.remove('is-consulting');
@@ -67,7 +67,7 @@ function onMotion(event) {
   if (!sensorSeen && hasSensorData(event)) {
     sensorSeen = true;
     clearTimeout(sensorTimer);
-    $('motionStatus').textContent = 'Secoue doucement ton iPhone deux fois pour consulter l’oracle.';
+    $('motionStatus').textContent = '';
   }
   if (busy) {
     shake.reset();
@@ -112,7 +112,7 @@ async function enableMotion() {
     $('motion').hidden = true;
     $('motion').setAttribute('aria-pressed', 'true');
     ($('motion').querySelector('span') || $('motion')).textContent = 'Mouvements autorisés';
-    $('motionStatus').textContent = 'Mode secousse activé. Secoue doucement ton iPhone deux fois.';
+    $('motionStatus').textContent = '';
     sensorTimer = window.setTimeout(() => {
       if (motionEnabled) $('motionStatus').textContent = 'Aucun mouvement reçu. Vérifie les autorisations de Safari et utilise un téléphone avec capteur de mouvement.';
     }, 7000);

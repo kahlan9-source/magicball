@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-release="5.0.0">
+<html lang="fr" data-release="6.0.0">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -37,11 +37,10 @@
       <div class="floor-shadow" aria-hidden="true"></div>
       <div id="ball" class="ball-button" role="img" aria-label="Boule magique : secoue ton téléphone pour révéler une réponse" aria-describedby="consultHint"><canvas id="ballCanvas" aria-hidden="true"></canvas></div>
     </div>
-    <div class="verdict-label" id="answerKind" aria-hidden="true">LE HASARD A FAIT MÉDECINE.</div>
-    <div id="answer" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
-    <div class="dedication" id="dedication"><p>Toutes ces années de formation…<br><span>Alors qu’il suffisait de télécharger l’application.</span></p></div>
+    <div class="verdict-label" id="answerKind" aria-hidden="true"></div>
+    <div id="answer" class="answer-text" role="status" aria-live="polite" aria-atomic="true"></div>
     <div class="controls">
-      <p id="consultHint" class="consult-hint">Secoue ton téléphone. L’oracle fait le reste.</p>
+      <p id="consultHint" class="consult-hint">Secoue pour découvrir le verdict.</p>
       <button class="motion-button" id="motion" aria-pressed="false"><svg aria-hidden="true"><use href="#phone"/></svg><span>Autoriser les mouvements</span></button>
       <p class="motion-status" id="motionStatus" role="status" aria-live="polite"></p>
     </div>
@@ -49,10 +48,10 @@
   </main>
   <footer>
     <div class="footer-rule"><span>✧</span></div>
-    <p class="proof">Sensibilité inconnue. Spécificité discutable.<br>Niveau de preuve : avis d'expert autoproclamé.</p>
+    <p class="proof"><strong>Sensibilité inconnue.<br>Spécificité discutable.</strong><span>Niveau de preuve : avis d'expert autoproclamé.</span></p>
     <p class="disclaimer">À usage humoristique exclusivement.<br>Ne remplace pas un colloque de médecine fœtale (malheureusement).</p>
     <p class="offline-status" id="offlineStatus" role="status">Préparation du mode hors ligne…</p>
-  <p class="release-label">Édition 5.0 · 45 réponses · secousse uniquement</p>
+  <p class="release-label">Édition 6.0 · 45 réponses</p>
   </footer>
   <dialog id="installDialog" aria-labelledby="installTitle" aria-describedby="installDescription">
     <button class="close-button" id="closeInstall" aria-label="Fermer"><svg aria-hidden="true"><use href="#close"/></svg></button>

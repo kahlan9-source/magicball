@@ -63,23 +63,27 @@ function completeVector(value) {
 
 // A deliberate back-and-forth movement produces at least two distinct peaks.
 // A single bump, sustained acceleration, or rotating gravity must not reveal.
-export function createShakeDetector({ threshold = 10, releaseThreshold = 4, minPeakGap = 90,
-  maxPeakGap = 900, cooldown = 1800 } = {}) {
+export function createShakeDetector({ threshold = 6, releaseThreshold = 4.5, minPeakGap = 60,
+  maxPeakGap = 1200, cooldown = 1600 } = {}) {
   let firstPeak = null;
   let aboveThreshold = false;
+  let peakVector = null;
   let lastShake = -Infinity;
 
   return {
     reset() {
       firstPeak = null;
       aboveThreshold = false;
+      peakVector = null;
     },
     push(event, now) {
       if (!Number.isFinite(now)) return false;
       let amount;
+      let vector = null;
       if (completeVector(event.acceleration)) {
         const { x, y, z } = event.acceleration;
         amount = Math.hypot(x, y, z);
+        vector = event.acceleration;
       } else if (completeVector(event.accelerationIncludingGravity)) {
         const { x, y, z } = event.accelerationIncludingGravity;
         amount = Math.abs(Math.hypot(x, y, z) - 9.81);
@@ -92,7 +96,13 @@ export function createShakeDetector({ threshold = 10, releaseThreshold = 4, minP
         aboveThreshold = false;
         return false;
       }
-      if (amount < threshold || aboveThreshold) return false;
+      // A direction reversal is a second peak even if a lower-rate sensor
+      // misses the zero crossing. Only use gravity-free vectors for this.
+      const reversed = vector && peakVector &&
+        (vector.x * peakVector.x + vector.y * peakVector.y + vector.z * peakVector.z) <
+        -0.25 * amount * Math.hypot(peakVector.x, peakVector.y, peakVector.z);
+      if (amount < threshold || (aboveThreshold && !reversed)) return false;
+      peakVector = vector;
       aboveThreshold = true;
       if (now - lastShake < cooldown) {
         firstPeak = null;
